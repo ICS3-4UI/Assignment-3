@@ -1,3 +1,7 @@
+"""
+Using loops to animate causes flickering
+"""
+
 from time import sleep
 from tkinter import *
 import random as rd

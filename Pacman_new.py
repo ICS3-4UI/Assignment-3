@@ -1,3 +1,7 @@
+"""
+New Pacman script, using Tkinter's animation methods to avoid flickering, and OOP-Style
+"""
+
 from time import sleep
 from tkinter import *
 import random as rd
@@ -39,11 +43,14 @@ class Pacman(Frame):
         # Horizontal speed is controlled by frame speed
         if self.frames != 0:
             self.after(self.xSpeed, self.moveCharacter)
+
+            # Pacman's current mouth position equals to current frame proportional to each cherries location.
             if self.frames % ((RADIUS * 1.6) + self.xSpeed) == 0:
                 self.canvas.delete(self.cherries[self.current_cherry])
                 self.current_cherry += 1
 
     def __init__(self, master=None):
+        # Init with superclass
         Frame.__init__(self, master)
 
         self.start_angle = 1
