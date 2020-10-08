@@ -39,7 +39,7 @@ class Pacman(Frame):
         # Horizontal speed is controlled by frame speed
         if self.frames != 0:
             self.after(self.xSpeed, self.moveCharacter)
-            if self.frames % 110 == 0:
+            if self.frames % ((RADIUS * 1.6) + self.xSpeed) == 0:
                 self.canvas.delete(self.cherries[self.current_cherry])
                 self.current_cherry += 1
 
