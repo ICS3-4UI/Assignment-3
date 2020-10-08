@@ -21,6 +21,8 @@ def midpoint(x, y):
 
 # Vertices
 p, p1, p2 = [WIDTH - 100, 0], [0, HEIGHT], [WIDTH, HEIGHT]
+
+# Interchanging colour
 colour = ["white", "blue"]
 
 # Parent triangle (largest)
