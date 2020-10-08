@@ -5,65 +5,75 @@ import math
 
 WIDTH = 800
 HEIGHT = 800
-
-myInterface = Tk()
-screen = Canvas(myInterface, width=WIDTH, height=HEIGHT, background="black")
-screen.pack()
+RADIUS = 60
 
 
-def create_circle(x, y, r, screenName, color):
-    x0 = x - r
-    y0 = y - r
-    x1 = x + r
-    y1 = y + r
-    return screenName.create_oval(x0, y0, x1, y1, outline="", fill=color)
+class Pacman(Frame):
+    # Creates a circular arc
+    def circular_arc(self, screen, x, y, r):
+        return screen.create_arc(x - r, y - r, x + r, y + r, fill='yellow', style=PIESLICE, start=self.start_angle, extent=self.close_angle)
+
+    def create_circle(self, x, y, r, screenName, color):
+        x0 = x - r
+        y0 = y - r
+        x1 = x + r
+        y1 = y + r
+        return screenName.create_oval(x0, y0, x1, y1, outline="", fill=color)
+
+    def mouth_angle(self):
+        if self.start_angle == 1:
+            self.start_angle = 30
+            self.close_angle = 360 - 2 * self.start_angle
+        else:
+            self.start_angle = 1
+            self.close_angle = 359
+
+    def moveCharacter(self):
+        # Set mouth move speed
+        self.frames -= 1
+        self.canvas.move(self.Character, 1, 0)
+        # Horizontal movement speed
+        if self.frames % self.mouthSpeed == 0:
+            self.mouth_angle()
+            self.canvas.itemconfig(self.Character, start=self.start_angle, extent=self.close_angle)
+        # Horizontal speed is controlled by frame speed
+        if self.frames != 0:
+            self.after(self.xSpeed, self.moveCharacter)
+            if self.frames % 110 == 0:
+                self.canvas.delete(self.cherries[self.current_cherry])
+                self.current_cherry += 1
+
+    def __init__(self, master=None):
+        Frame.__init__(self, master)
+
+        self.start_angle = 1
+        self.close_angle = 359
+        self.mouthSpeed = 20
+        self.xSpeed = 10
+
+        self.canvas = Canvas(width=WIDTH, height=HEIGHT, background='black')
+        self.canvas.pack(expand=YES, fill=BOTH)
+
+        # Cherries
+        self.cherries = []
+        self.cherries_x, self.cherries_y = [80], [HEIGHT / 2]
+        self.cherries_amount = 10
+        self.current_cherry = 0
+        for i in range(self.cherries_amount):
+            self.cherries.append(self.create_circle(self.cherries_x[i], self.cherries_y[i], 10, self.canvas, "red"))
+            self.cherries_x.append(int(self.cherries_x[-1]) + 100)
+            self.cherries_y.append(HEIGHT / 2)
+
+        self.Character = self.circular_arc(self.canvas, 0, HEIGHT / 2, RADIUS)
+
+        self.frames = WIDTH
+
+        self.moveCharacter()
 
 
-def draw_arc(screenName, x, y, r, **kwargs):
-    if "start" in kwargs and "end" in kwargs:
-        kwargs["extent"] = kwargs["end"] - kwargs["start"]
-        del kwargs["end"]
-    return screenName.create_arc(x - r, y - r, x + r, y + r, fill="yellow", **kwargs)
+myScreen = Tk()
+myScreen.title("Pacman")
+myScreen.geometry(f"{WIDTH}x{HEIGHT}")
 
-
-cherries = []
-cherries_radius = 20
-cherry_x, cherry_y = [300], [200]
-# cherries
-for n in range(5):
-    cherries.append(create_circle(cherry_x[n], cherry_y[n], cherries_radius, screen, "red"))
-    cherry_x.append(int(cherry_x[-1]) + 100)
-    cherry_y.append(200)
-
-Original_START = 60
-START = Original_START
-CLOSE_SPEED = 5
-x, y = 100, 200
-RADIUS = 100
-currentcherry = 0
-
-while x + RADIUS != WIDTH:
-    EXTENT = 360 - 2 * START
-    pacman = draw_arc(screen, x, y, RADIUS, start=START, extent=EXTENT)
-
-    if START <= Original_START:
-        START -= CLOSE_SPEED
-
-    if START == 0:
-        CLOSE_SPEED = -CLOSE_SPEED
-    elif START == Original_START:
-        CLOSE_SPEED = -CLOSE_SPEED
-
-    for cx in cherry_x:
-        if x == cx - cherries_radius:
-            screen.delete(cherries[currentcherry])
-            currentcherry += 1
-
-    x += 10
-    screen.update()
-    screen.delete(pacman)
-    sleep(0.1)
-
-pacman = draw_arc(screen, x, y, RADIUS, start=START, extent=EXTENT)
-
+screen = Pacman(master=myScreen)
 screen.mainloop()
