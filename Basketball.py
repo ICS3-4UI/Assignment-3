@@ -1,9 +1,6 @@
 from time import sleep
 from tkinter import *
-from PIL import ImageTk, Image
-import os
 import random as rd
-import math
 
 WIDTH = 1000
 HEIGHT = 800

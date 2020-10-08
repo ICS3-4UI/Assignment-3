@@ -1,6 +1,5 @@
 from time import sleep
 from tkinter import *
-import random as rd
 from datetime import datetime
 import math
 

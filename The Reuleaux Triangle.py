@@ -1,5 +1,4 @@
 from tkinter import *
-import random as rd
 import math
 
 WIDTH = 800

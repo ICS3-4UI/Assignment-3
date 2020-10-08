@@ -2,10 +2,7 @@
 New Pacman script, using Tkinter's animation methods to avoid flickering, and OOP-Style
 """
 
-from time import sleep
 from tkinter import *
-import random as rd
-import math
 
 WIDTH = 800
 HEIGHT = 800
