@@ -9,6 +9,7 @@ WIDTH = 1000
 HEIGHT = 800
 
 myInterface = Tk()
+myInterface.title("Granny Shot Competition")
 screen = Canvas(myInterface, width=WIDTH, height=HEIGHT, background="sky blue")
 screen.pack()
 

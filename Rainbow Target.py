@@ -8,6 +8,7 @@ RADIUS = 60
 ORIGIN = [WIDTH / 2, HEIGHT / 2]
 
 myInterface = Tk()
+myInterface.title("Rainbow Target")
 screen = Canvas(myInterface, width=WIDTH, height=HEIGHT, background="white")
 screen.pack()
 

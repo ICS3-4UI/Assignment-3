@@ -8,6 +8,7 @@ ORIGIN = [WIDTH / 2, HEIGHT / 2]
 TRI_HEIGHT = 200
 
 myInterface = Tk()
+myInterface.title("The Reuleaux Triangle")
 screen = Canvas(myInterface, width=WIDTH, height=HEIGHT, background="black")
 screen.pack()
 

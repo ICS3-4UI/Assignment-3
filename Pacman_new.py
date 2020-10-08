@@ -79,7 +79,7 @@ class Pacman(Frame):
 
 
 myScreen = Tk()
-myScreen.title("Pacman")
+myScreen.title("Pacman - New version")
 myScreen.geometry(f"{WIDTH}x{HEIGHT}")
 
 screen = Pacman(master=myScreen)
