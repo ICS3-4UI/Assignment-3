@@ -69,7 +69,7 @@ while True:
 
     end_x = ORIGIN[0] + hand_length * math.cos(angle_in_radians)
     end_y = ORIGIN[1] + hand_length * math.sin(angle_in_radians)
-    secondhand = screen.create_line(ORIGIN, end_x, end_y, width=10, fill="blue")
+    secondhand = screen.create_line(ORIGIN, end_x, end_y, width=8, fill="blue")
 
     # Update minute
     angle_in_radians = minute_angle * math.pi / 180
@@ -83,7 +83,7 @@ while True:
     hand_length = clock_radius - 110
     end_x = ORIGIN[0] + hand_length * math.cos(angle_in_radians)
     end_y = ORIGIN[1] + hand_length * math.sin(angle_in_radians)
-    hourhand = screen.create_line(ORIGIN, end_x, end_y, width=16, fill="green")
+    hourhand = screen.create_line(ORIGIN, end_x, end_y, width=19, fill="green")
     screen.update()
     sleep(1)
     screen.delete(secondhand, minutehand, hourhand)
