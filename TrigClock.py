@@ -68,7 +68,6 @@ while True:
     # Update second
     angle_in_radians = second_angle * math.pi / 180
     hand_length = clock_radius - 40
-
     end_x = ORIGIN[0] + hand_length * math.cos(angle_in_radians)
     end_y = ORIGIN[1] + hand_length * math.sin(angle_in_radians)
     secondhand = screen.create_line(ORIGIN, end_x, end_y, width=8, fill="blue")
