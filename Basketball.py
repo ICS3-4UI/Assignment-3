@@ -153,7 +153,8 @@ xSpeed = 0.1
 ySpeed = 0.3
 gravity = 0.2
 xStart, yStart = 0, 0
-bounce_count = 0
+bounce_count = 50
+upward_force = 70
 
 eye_c = ["white", "white", "white", "black", "black", "black"]
 
@@ -172,20 +173,21 @@ for f in range(200):
         bx = arm_2x
         by = arm_2y
     if f > 20 and not (bx + b_radius > tl[0] + 60):
-        bx = 8 * (f - 20) + arm_2x
+        bx = 8.5 * (f - 20) + arm_2x
         by = .2 * (f - 20) ** 2 - 13 * (f - 20) + arm_2y
         basketball = create_circle(bx, by, b_radius, screen, "brown")
 
     else:
-        if bx + b_radius > tl[0] + 60:
+        if bx + b_radius > tl[0] + 60 and bounce_count > 0:
             basketball = create_circle(bx, by, b_radius, screen, "brown")
-            by += 10
+            by += 15
 
-        if by - b_radius >= 600:
-            by -= 16
-
-        # if bounce_count == 15:
-        #     break
+            if by - b_radius >= 600:
+                by -= bounce_count
+                bounce_count -= 3
+        elif bounce_count <= 0:
+            basketball = create_circle(bx, by, b_radius, screen, "brown")
+            break
 
     screen.update()
     sleep(0.03)
