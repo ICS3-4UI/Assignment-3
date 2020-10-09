@@ -23,15 +23,15 @@ def create_circle(x, y, r, screenName, color="", out="", w="", d=""):
 
 clock_radius = WIDTH / 2 - 50
 clock_circumference = 2 * math.pi * clock_radius
-hour_num = [3, 2, 1, 12, 11, 10, 9, 8, 7, 6, 5, 4]
+hour_num = [12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 
 # Place hour number on screen
 d_theta = 2 * math.pi / 12
 theta = 0
 
 for i in hour_num:
-    text_x = ORIGIN[0] + clock_radius * math.cos(theta)
-    text_y = ORIGIN[1] - clock_radius * math.sin(theta)
+    text_x = ORIGIN[0] + clock_radius * math.sin(theta)
+    text_y = ORIGIN[1] - clock_radius * math.cos(theta)
     theta += d_theta
     screen.create_text(text_x, text_y, text=i, font="Arial 25", fill="white")
 
