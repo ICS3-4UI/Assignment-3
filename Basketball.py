@@ -27,18 +27,19 @@ screen.create_rectangle(top_right, bottom_left, fill="grey", outline="")
 create_circle(900, 100, 80, screen, "gold")
 
 # Clouds
-for c in range(100):
+for c in range(rd.randint(100, 120)):
     x = rd.randint(300, 500)
     y = rd.randint(75, 125)
     size = rd.randint(30, 50)
     screen.create_oval(x, y, x + size, y + size, fill="white", outline="white")
 
-for c in range(100):
+for c in range(rd.randint(80, 100)):
     x = rd.randint(800, 1000)
     y = rd.randint(115, 165)
     size = rd.randint(30, 50)
     screen.create_oval(x, y, x + size, y + size, fill="white", outline="white")
-for c in range(80):
+
+for c in range(rd.randint(60, 80)):
     x = rd.randint(550, 630)
     y = rd.randint(300, 325)
     size = rd.randint(10, 30)
@@ -46,6 +47,9 @@ for c in range(80):
 
 # Basketball net
 screen.create_rectangle(685, 385, 724, 386, width=3, outline="brown")
+
+n_tl, n_br = [725, 300], [735, 675]
+screen.create_rectangle(n_tl, n_br, fill="white", outline="")
 
 colour = ["black", "silver", "grey", "slategray"]
 # Asphalt
@@ -55,8 +59,10 @@ for i in range(500):
     s = rd.randint(1, 4)
     c = rd.choice(colour)
     a = screen.create_oval(x, y, x + s, y + s, fill=c, outline="")
-n_tl, n_br = [725, 300], [735, 675]
-screen.create_rectangle(n_tl, n_br, fill="white", outline="")
+
+# Netbar
+
+
 # Strings
 screen.create_line(610, 381, 620, 450, fill="white", width=3)
 screen.create_line(680, 390, 670, 450, fill="white", width=3)
