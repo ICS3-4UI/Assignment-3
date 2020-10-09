@@ -11,7 +11,7 @@ RADIUS = 60
 
 class Pacman(Frame):
     # Creates a circular arc
-    def circular_arc(self, screen, x, y, r):
+    def create_pacman(self, screen, x, y, r):
         return screen.create_arc(x - r, y - r, x + r, y + r, fill='yellow', style=PIESLICE, start=self.start_angle, extent=self.close_angle)
 
     def create_circle(self, x, y, r, screenName, color):
@@ -68,7 +68,7 @@ class Pacman(Frame):
             self.cherries_x.append(int(self.cherries_x[-1]) + 100)
             self.cherries_y.append(HEIGHT / 2)
 
-        self.Character = self.circular_arc(self.canvas, 0, HEIGHT / 2, RADIUS)
+        self.Character = self.create_pacman(self.canvas, 0, HEIGHT / 2, RADIUS)
 
         self.frames = WIDTH
 

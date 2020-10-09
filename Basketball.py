@@ -163,19 +163,21 @@ for f in range(200):
     arm2 = screen.create_polygon(125, 570, arm_2x, arm_2y, outline="black", width="4")
     create_circle(121, 461, 3, screen, eye_c[f % 6]), create_circle(146, 461, 3, screen, eye_c[f % 6])
 
-    if f < 15:
+    if f < 20:
         basketball = create_circle(bx, by, b_radius, screen, "brown")
         arm_1y -= 3
         arm_2y -= 3
         arm_1x -= 4
         arm_2x -= 4
-    if f > 15 and not (bx + b_radius > tl[0] + 50):
-        bx = 9 * (f - 15) + 200
-        by = gravity * (f - 15) ** 2 - 14 * f + 750
+        bx = arm_2x
+        by = arm_2y
+    if f > 20 and not (bx + b_radius > tl[0] + 60):
+        bx = 8 * (f - 20) + arm_2x
+        by = .2 * (f - 20) ** 2 - 13 * (f - 20) + arm_2y
         basketball = create_circle(bx, by, b_radius, screen, "brown")
 
     else:
-        if bx + b_radius > tl[0] - 10:
+        if bx + b_radius > tl[0] + 60:
             basketball = create_circle(bx, by, b_radius, screen, "brown")
             by += 10
 
