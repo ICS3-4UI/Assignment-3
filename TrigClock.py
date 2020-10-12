@@ -40,11 +40,11 @@ d_theta = 2 * math.pi / 60
 theta = 0
 
 for i in range(60):
-    x = ORIGIN[0] + clock_radius * math.sin(theta)
-    y = ORIGIN[1] - clock_radius * math.cos(theta)
+    x = ORIGIN[0] + clock_radius * math.cos(theta)
+    y = ORIGIN[1] - clock_radius * math.sin(theta)
     theta += d_theta
 
-    # Skip if we have an hour number
+    # Skip if we have an hour number, because we don't need dots overlapping the number
     if i % 5 == 0:
         continue
     else:
