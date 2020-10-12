@@ -195,6 +195,7 @@ for f in range(200):
 
 basketball = create_circle(bx, by, b_radius, screen, "brown")
 
+screen.delete(arm1, arm2)
 for f in range(50):
     arm1 = screen.create_polygon(125, 550, arm_1x, arm_1y, outline="black", width="4")
     arm2 = screen.create_polygon(125, 570, arm_2x, arm_2y, outline="black", width="4")
