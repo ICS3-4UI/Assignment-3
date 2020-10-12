@@ -57,10 +57,15 @@ screen.create_rectangle(n_tl, n_br, fill="white", outline="")
 
 colour = ["black", "silver", "grey", "slategray"]
 # Asphalt
-for i in range(500):
+for i in range(600):
     x = rd.randint(0, WIDTH)
     y = rd.randint(525, HEIGHT)
     s = rd.randint(1, 4)
+
+    # Prevent asphalt from spawning on net bar
+    if n_tl[0] <= x + s <= n_br[0] and n_tl[1] <= y + s <= n_br[1]:
+        continue
+
     c = rd.choice(colour)
     a = screen.create_oval(x, y, x + s, y + s, fill=c, outline="")
 
