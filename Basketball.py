@@ -57,7 +57,7 @@ screen.create_rectangle(n_tl, n_br, fill="white", outline="")
 
 colour = ["black", "silver", "grey", "slategray"]
 # Asphalt
-for i in range(600):
+for i in range(1100):
     x = rd.randint(0, WIDTH)
     y = rd.randint(525, HEIGHT)
     s = rd.randint(1, 4)
