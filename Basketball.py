@@ -29,7 +29,7 @@ create_circle(900, 100, 80, screen, "gold")
 # Clouds
 
 # Different cloud colours to create a 3D feel to it.
-c_clr = ["snow", "azure", "light cyan", "white"]
+c_clr = ["snow", "azure", "light cyan", "white", "ghost white", "gray95", "gray96", "gray97"]
 
 for c in range(rd.randint(100, 120)):
     x = rd.randint(300, 500)
@@ -47,7 +47,7 @@ for c in range(rd.randint(60, 80)):
     x = rd.randint(550, 630)
     y = rd.randint(300, 325)
     size = rd.randint(10, 30)
-    screen.create_oval(x, y, x + size, y + size, fill=rd.choice(c_clr), outline="white")
+    screen.create_oval(x, y, x + size, y + size, fill=rd.choice(c_clr), outline="")
 
 # Basketball net
 screen.create_rectangle(685, 385, 724, 386, width=3, outline="brown")
