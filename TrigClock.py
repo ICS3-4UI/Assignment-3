@@ -57,35 +57,37 @@ while True:
     second = datetime.now().second
 
     # Tkinter angle correction
-    ac = -90
+    angle_correction = -90
 
     # Angle information
-    hour_angle = (((hour % 12) + (minute / 60)) / 12) * 360 + ac
-    minute_angle = ((minute + (second / 60)) / 60) * 360 + ac
-    second_angle = ((second / 60) * 360) + ac
+    hour_angle = (((hour % 12) + (minute / 60)) / 12) * 360 + angle_correction
+    minute_angle = ((minute + (second / 60)) / 60) * 360 + angle_correction
+    second_angle = ((second / 60) * 360) + angle_correction
 
     # Update second
     angle_in_radians = second_angle * math.pi / 180
     hand_length = clock_radius - 40
     end_x = ORIGIN[0] + hand_length * math.cos(angle_in_radians)
     end_y = ORIGIN[1] + hand_length * math.sin(angle_in_radians)
-    secondhand = screen.create_line(ORIGIN, end_x, end_y, width=8, fill="blue")
+    secondHand = screen.create_line(ORIGIN, end_x, end_y, width=8, fill="blue")
 
     # Update minute
     angle_in_radians = minute_angle * math.pi / 180
     hand_length = clock_radius - 70
     end_x = ORIGIN[0] + hand_length * math.cos(angle_in_radians)
     end_y = ORIGIN[1] + hand_length * math.sin(angle_in_radians)
-    minutehand = screen.create_line(ORIGIN, end_x, end_y, width=13, fill="red")
+    minuteHand = screen.create_line(ORIGIN, end_x, end_y, width=13, fill="red")
 
     # Update hour
     angle_in_radians = hour_angle * math.pi / 180
     hand_length = clock_radius - 110
     end_x = ORIGIN[0] + hand_length * math.cos(angle_in_radians)
     end_y = ORIGIN[1] + hand_length * math.sin(angle_in_radians)
-    hourhand = screen.create_line(ORIGIN, end_x, end_y, width=19, fill="green")
+    hourHand = screen.create_line(ORIGIN, end_x, end_y, width=19, fill="green")
+
+    # Animation
     screen.update()
     sleep(1)
-    screen.delete(secondhand, minutehand, hourhand)
+    screen.delete(secondHand, minuteHand, hourHand)
 
 screen.mainloop()
