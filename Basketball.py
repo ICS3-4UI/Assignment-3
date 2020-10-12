@@ -27,23 +27,27 @@ screen.create_rectangle(top_right, bottom_left, fill="grey", outline="")
 create_circle(900, 100, 80, screen, "gold")
 
 # Clouds
+
+# Different cloud colours to create a 3D feel to it.
+c_clr = ["snow", "azure", "light cyan", "white"]
+
 for c in range(rd.randint(100, 120)):
     x = rd.randint(300, 500)
     y = rd.randint(75, 125)
     size = rd.randint(30, 50)
-    screen.create_oval(x, y, x + size, y + size, fill="white", outline="white")
+    create_circle(x, y, size, screen, color=rd.choice(c_clr))
 
 for c in range(rd.randint(80, 100)):
     x = rd.randint(800, 1000)
-    y = rd.randint(115, 165)
+    y = rd.randint(155, 215)
     size = rd.randint(30, 50)
-    screen.create_oval(x, y, x + size, y + size, fill="white", outline="white")
+    create_circle(x, y, size, screen, color=rd.choice(c_clr))
 
 for c in range(rd.randint(60, 80)):
     x = rd.randint(550, 630)
     y = rd.randint(300, 325)
     size = rd.randint(10, 30)
-    screen.create_oval(x, y, x + size, y + size, fill="white", outline="white")
+    screen.create_oval(x, y, x + size, y + size, fill=rd.choice(c_clr), outline="white")
 
 # Basketball net
 screen.create_rectangle(685, 385, 724, 386, width=3, outline="brown")
@@ -59,9 +63,6 @@ for i in range(500):
     s = rd.randint(1, 4)
     c = rd.choice(colour)
     a = screen.create_oval(x, y, x + s, y + s, fill=c, outline="")
-
-# Netbar
-
 
 # Strings
 screen.create_line(610, 381, 620, 450, fill="white", width=3)
@@ -119,12 +120,6 @@ original_arm_coord = [arm_1x, arm_2x, arm_1y, arm_2y]
 eye1, eye2 = create_circle(120, 460, 5, screen, "black"), create_circle(145, 460, 5, screen, "black")
 pupils = create_circle(121, 461, 3, screen, "white"), create_circle(146, 461, 3, screen, "white")
 mouth = screen.create_polygon(120, 490, 130, 500, 140, 490, width=3)
-
-# for f in range(2000):
-#
-#     screen.update()
-#     sleep(0.5)
-#     screen.delete(pupils)
 
 # Sign
 screen.create_rectangle(900, 600, 910, 800, fill="light gray", outline="")
@@ -202,8 +197,6 @@ for f in range(50):
 
     arm_1y += 3
     arm_2y += 3
-    # arm_1x += 4
-    # arm_2x += 4
 
     screen.update()
     sleep(0.03)
