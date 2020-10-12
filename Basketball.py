@@ -20,7 +20,7 @@ def create_circle(x, y, r, screenName, color):
 
 
 # Floor
-top_right, bottom_left = [0, 525], [WIDTH, HEIGHT]
+top_right, bottom_left = [0, 525], [WIDTH + 1, HEIGHT + 1]
 screen.create_rectangle(top_right, bottom_left, fill="grey", outline="")
 
 # Sun
