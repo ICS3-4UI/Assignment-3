@@ -13,7 +13,7 @@ class Pacman(Frame):
     # Character init
     def create_pacman(self, screen, x, y, r):
         x, y, x1, y1 = x - r, y - r, x + r, y + r
-        return screen.create_arc(x, y, x1, y1, fill='yellow', style=PIESLICE, start=self.angleOpen, extent=self.angleClose)
+        return screen.create_arc(x, y, x1, y1, start=self.angleOpen, extent=self.angleClose, fill='yellow', style=PIESLICE)
 
     def create_circle(self, x, y, r, screenName, color):
         x0 = x - r
