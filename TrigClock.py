@@ -38,8 +38,7 @@ for i in range(60):
     # Skip if we have an hour number, because we don't need dots overlapping the number
     if i % 5 == 0:
         continue
-    else:
-        screen.create_oval(x, y, x + 6, y + 6, fill="white")
+    screen.create_oval(x, y, x + 6, y + 6, fill="white")
 
 while True:
     # Time info
