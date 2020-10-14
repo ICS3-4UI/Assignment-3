@@ -6,13 +6,13 @@ from tkinter import *
 
 WIDTH = 800
 HEIGHT = 800
-RADIUS = 60
+Pacman_RADIUS = 60
 
 
 class Pacman(Frame):
     # Creates a circular arc
     def create_pacman(self, screen, x, y, r):
-        return screen.create_arc(x - r, y - r, x + r, y + r, fill='yellow', style=PIESLICE, start=self.start_angle, extent=self.close_angle)
+        return screen.create_arc(x - r, y - r, x + r, y + r, fill='yellow', style=PIESLICE, start=self.angleOpen, extent=self.angleClose)
 
     def create_circle(self, x, y, r, screenName, color):
         x0 = x - r
@@ -22,12 +22,12 @@ class Pacman(Frame):
         return screenName.create_oval(x0, y0, x1, y1, outline="", fill=color)
 
     def mouth_angle(self):
-        if self.start_angle == 1:
-            self.start_angle = 30
-            self.close_angle = 360 - 2 * self.start_angle
+        if self.angleOpen == 1:
+            self.angleOpen = 30
+            self.angleClose = 360 - 2 * self.angleOpen
         else:
-            self.start_angle = 1
-            self.close_angle = 359
+            self.angleOpen = 1
+            self.angleClose = 359
 
     def moveCharacter(self):
         # Set mouth move speed
@@ -36,13 +36,13 @@ class Pacman(Frame):
         # Horizontal movement speed
         if self.frames % self.mouthSpeed == 0:
             self.mouth_angle()
-            self.canvas.itemconfig(self.Character, start=self.start_angle, extent=self.close_angle)
+            self.canvas.itemconfig(self.Character, start=self.angleOpen, extent=self.angleClose)
         # Horizontal speed is controlled by frame speed
         if self.frames != 0:
             self.after(self.xSpeed, self.moveCharacter)
 
             # Pacman's current mouth position equals to current frame proportional to each cherries location.
-            if self.frames % ((RADIUS * 1.6) + self.xSpeed) == 0:
+            if self.frames % ((Pacman_RADIUS * 1.6) + self.xSpeed) == 0:
                 self.canvas.delete(self.cherries[self.current_cherry])
                 self.current_cherry += 1
 
@@ -50,13 +50,14 @@ class Pacman(Frame):
         # Init with superclass
         Frame.__init__(self, master)
 
-        self.start_angle = 1
-        self.close_angle = 359
+        self.angleOpen = 1
+        self.angleClose = 359
         self.mouthSpeed = 20
         self.xSpeed = 10
 
+        # Init screen
         self.canvas = Canvas(width=WIDTH, height=HEIGHT, background='black')
-        self.canvas.pack(expand=YES, fill=BOTH)
+        self.canvas.pack()
 
         # Cherries
         self.cherries = []
@@ -68,16 +69,16 @@ class Pacman(Frame):
             self.cherries_x.append(int(self.cherries_x[-1]) + 100)
             self.cherries_y.append(HEIGHT / 2)
 
-        self.Character = self.create_pacman(self.canvas, 0, HEIGHT / 2, RADIUS)
+        self.Character = self.create_pacman(self.canvas, 0, HEIGHT / 2, Pacman_RADIUS)
 
         self.frames = WIDTH
 
         self.moveCharacter()
 
 
-myScreen = Tk()
-myScreen.title("Pacman - New version")
-myScreen.geometry(f"{WIDTH}x{HEIGHT}")
+tk = Tk()
+tk.title("Pacman - New version")
+tk.geometry(f"{WIDTH}x{HEIGHT}")
 
-screen = Pacman(master=myScreen)
+screen = Pacman(master=tk)
 screen.mainloop()
