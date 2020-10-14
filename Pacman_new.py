@@ -23,9 +23,6 @@ class Pacman(Frame):
         return screenName.create_oval(x0, y0, x1, y1, outline="", fill=color)
 
     def characterAnimation(self):
-        # Set mouth move speed
-        self.frames -= 1
-        self.screen.move(self.Character, 1, 0)
         # Horizontal movement speed
         if self.frames % self.mouthSpeed == 0:
             self.mouth_angle()
@@ -38,6 +35,10 @@ class Pacman(Frame):
             if self.frames % ((Pacman_RADIUS * 1.6) + self.xSpeed) == 0:
                 self.screen.delete(self.cherries[self.current_cherry])
                 self.current_cherry += 1
+
+        # Set mouth move speed
+        self.frames -= 1
+        self.screen.move(self.Character, 1, 0)
 
     def mouth_angle(self):
         if self.angleOpen != 1:
