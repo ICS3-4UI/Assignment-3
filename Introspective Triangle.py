@@ -1,9 +1,5 @@
 from tkinter import *
-import math
-import numpy as np
 import statistics
-
-from sympy import Point
 
 WIDTH = 800
 HEIGHT = 800
