@@ -6,6 +6,7 @@ HEIGHT = 800
 ORIGIN = [WIDTH / 2, HEIGHT / 2]
 
 myInterface = Tk()
+myInterface.resizable(0, 0)
 myInterface.title("The Reuleaux Triangle")
 screen = Canvas(myInterface, width=WIDTH, height=HEIGHT, background="black")
 screen.pack()

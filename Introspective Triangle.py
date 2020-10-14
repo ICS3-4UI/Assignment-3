@@ -6,6 +6,7 @@ HEIGHT = 800
 D = 200
 
 myInterface = Tk()
+myInterface.resizable(0, 0)
 myInterface.title("Introspective Triangle")
 screen = Canvas(myInterface, width=WIDTH, height=HEIGHT, background="black")
 screen.pack()

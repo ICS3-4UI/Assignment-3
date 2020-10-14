@@ -9,6 +9,7 @@ WIDTH = 800
 HEIGHT = 800
 
 myInterface = Tk()
+myInterface.resizable(0, 0)
 myInterface.title("Pacman - Old version")
 screen = Canvas(myInterface, width=WIDTH, height=HEIGHT, background="black")
 screen.pack()

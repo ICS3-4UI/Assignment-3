@@ -80,6 +80,7 @@ class Pacman(Frame):
 
 
 tk = Tk()
+tk.resizable(0, 0)
 tk.title("Pacman - New version")
 tk.geometry(f"{WIDTH}x{HEIGHT}")
 

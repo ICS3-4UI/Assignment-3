@@ -7,6 +7,7 @@ HEIGHT = 800
 ORIGIN = [WIDTH / 2, HEIGHT / 2]
 
 myInterface = Tk()
+myInterface.resizable(0, 0)
 screen = Canvas(myInterface, width=WIDTH, height=HEIGHT, background="black")
 myInterface.title("Trig Clock")
 screen.pack()
