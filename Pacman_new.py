@@ -30,7 +30,7 @@ class Pacman(Frame):
             self.angleOpen = 30
             self.angleClose = 360 - 2 * self.angleOpen
 
-    def moveCharacter(self):
+    def characterAnimation(self):
         # Set mouth move speed
         self.frames -= 1
         self.screen.move(self.Character, 1, 0)
@@ -40,7 +40,7 @@ class Pacman(Frame):
             self.screen.itemconfig(self.Character, start=self.angleOpen, extent=self.angleClose)
         # Horizontal speed is controlled by frame speed
         if self.frames != 0:
-            self.after(self.xSpeed, self.moveCharacter)
+            self.after(self.xSpeed, self.characterAnimation)
 
             # Pacman's current mouth position equals to current frame proportional to each cherries location.
             if self.frames % ((Pacman_RADIUS * 1.6) + self.xSpeed) == 0:
@@ -74,7 +74,7 @@ class Pacman(Frame):
 
         self.frames = WIDTH
 
-        self.moveCharacter()
+        self.characterAnimation()
 
 
 tk = Tk()
