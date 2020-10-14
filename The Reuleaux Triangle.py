@@ -4,7 +4,6 @@ from math import *
 WIDTH = 800
 HEIGHT = 800
 ORIGIN = [WIDTH / 2, HEIGHT / 2]
-TRI_HEIGHT = 200
 
 myInterface = Tk()
 myInterface.title("The Reuleaux Triangle")
