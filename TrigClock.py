@@ -12,15 +12,6 @@ screen = Canvas(myInterface, width=WIDTH, height=HEIGHT, background="black")
 myInterface.title("Trig Clock")
 screen.pack()
 
-
-def create_circle(x, y, r, screenName, color="", out="", w="", d=""):
-    x0 = x - r
-    y0 = y - r
-    x1 = x + r
-    y1 = y + r
-    return screenName.create_oval(x0, y0, x1, y1, outline=out, fill=color, width=w, dash=d)
-
-
 clock_radius = WIDTH / 2 - 50
 clock_circumference = 2 * math.pi * clock_radius
 hour_num = [12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
