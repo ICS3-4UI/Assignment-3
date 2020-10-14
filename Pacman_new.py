@@ -10,7 +10,7 @@ Pacman_RADIUS = 60
 
 
 class Pacman(Frame):
-    # Creates a circular arc
+    # Character init
     def create_pacman(self, screen, x, y, r):
         x, y, x1, y1 = x - r, y - r, x + r, y + r
         return screen.create_arc(x, y, x1, y1, fill='yellow', style=PIESLICE, start=self.angleOpen, extent=self.angleClose)
