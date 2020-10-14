@@ -22,14 +22,6 @@ class Pacman(Frame):
         y1 = y + r
         return screenName.create_oval(x0, y0, x1, y1, outline="", fill=color)
 
-    def mouth_angle(self):
-        if self.angleOpen != 1:
-            self.angleOpen = 1
-            self.angleClose = 359
-        else:
-            self.angleOpen = 30
-            self.angleClose = 360 - 2 * self.angleOpen
-
     def characterAnimation(self):
         # Set mouth move speed
         self.frames -= 1
@@ -46,6 +38,14 @@ class Pacman(Frame):
             if self.frames % ((Pacman_RADIUS * 1.6) + self.xSpeed) == 0:
                 self.screen.delete(self.cherries[self.current_cherry])
                 self.current_cherry += 1
+
+    def mouth_angle(self):
+        if self.angleOpen != 1:
+            self.angleOpen = 1
+            self.angleClose = 359
+        else:
+            self.angleOpen = 30
+            self.angleClose = 360 - 2 * self.angleOpen
 
     def __init__(self, master=None):
         # Init with superclass
