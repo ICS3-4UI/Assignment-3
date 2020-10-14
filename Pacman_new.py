@@ -51,14 +51,15 @@ class Pacman(Frame):
         # Init with superclass
         Frame.__init__(self, master)
 
+        # Init screen
+        self.screen = Canvas(width=WIDTH, height=HEIGHT, background='black')
+        self.screen.pack()
+
+        # Game variables
         self.angleOpen = 1
         self.angleClose = 359
         self.mouthSpeed = 20
         self.xSpeed = 10
-
-        # Init screen
-        self.screen = Canvas(width=WIDTH, height=HEIGHT, background='black')
-        self.screen.pack()
 
         # Cherries
         self.cherries = []
