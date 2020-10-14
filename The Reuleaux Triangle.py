@@ -1,5 +1,5 @@
 from tkinter import *
-import math
+from math import *
 
 WIDTH = 800
 HEIGHT = 800
@@ -15,7 +15,7 @@ screen.pack()
 def draw_reuleaux_arc(screenVar, x, y, r):
     # Get the coordinates of the top vertices
     x1 = x + r / 2
-    y1 = y - r * math.sin(math.radians(60))
+    y1 = y - r * sin(radians(60))
     screenVar.create_arc(x - r, y - r, x + r, y + r, extent=60, fill="red", outline="")
     screenVar.create_arc(x, y - r, x + r + r, y + r, start=120, extent=60, fill="green", outline="")
     screenVar.create_arc(x1 - r, y1 - r, x1 + r, y1 + r, start=240, extent=60, fill="blue", outline="")
